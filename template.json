@@ -174,7 +174,7 @@
                     "#!/usr/bin/env bash\n",
                     "# Trigger the CFN Init Script\n",
                     "/opt/aws/bin/cfn-init -v ",
-                    " --stack", { "Ref": "AWS::StackName" },
+                    " --stack ", { "Ref": "AWS::StackName" },
                     " --resource Instance ",
                     " --configsets default ",
                     " --region ", { "Ref": "AWS::Region" },
