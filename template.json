@@ -172,12 +172,12 @@
             "Fn::Base64": {
                 "Fn::Join": ["", [
                     "#!/usr/bin/env bash\n",
-                    "# Trigger the CFN Init Script\n"
+                    "# Trigger the CFN Init Script\n",
                     "/opt/aws/bin/cfn-init -v ",
-                    "   --stack", { "Ref": "AWS::StackName" },
-                    "   --resource Instance ",
-                    "   --configsets default ",
-                    "   --region ", { "Ref": "Aws::Region" },
+                    " --stack", { "Ref": "AWS::StackName" },
+                    " --resource Instance ",
+                    " --configsets default ",
+                    " --region ", { "Ref": "AWS::Region" },
                     "\n"
                     ]
                 ]
@@ -205,6 +205,30 @@
         "Name": {
           "Fn::Sub": "${AWS::StackName}-SecurityGroupId"
         }
+      }
+    },
+    "InstanceId": {
+      "Description": "ID of the EC2 Instance",
+      "Value": {
+        "Ref": "Instance"
+      }
+    },
+    "InstancePublicIp": {
+      "Description": "Public IPv4 address of the EC2 Instance",
+      "Value": {
+        "Fn::GetAtt": [
+          "Instance",
+          "PublicIp"
+        ]
+      }
+    },
+    "InstancePublicDns": {
+      "Description": "Public DNS address of the EC2 Instance",
+      "Value": {
+        "Fn::GetAtt": [
+          "Instance",
+          "PublicDnsName"
+        ]
       }
     }
   }
