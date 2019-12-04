@@ -173,6 +173,9 @@
                 "Fn::Join": ["", [
                     "#!/usr/bin/env bash\n",
                     "# Trigger the CFN Init Script\n",
+                    "# Be VERY mindful of the spaces both pre and post objects -\n",
+                    "# as they must be present for the command to properly compound and execute\n",
+                    "# monitor /var/log/cloud-init-output.log and /var/log/cfn-init.log\n",
                     "/opt/aws/bin/cfn-init -v ",
                     " --stack ", { "Ref": "AWS::StackName" },
                     " --resource Instance ",
